@@ -66,6 +66,12 @@ Connect to the VM:
 ssh <user>@<public-ip>
 ```
 
+Clone the repository and add Maven to the session:
+
+```sh
+source ./maven.sh
+```
+
 Check if the cloud-init script ran correctly:
 
 ```sh
