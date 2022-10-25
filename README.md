@@ -21,7 +21,26 @@ az storage queue create -n "benchmark-queue" --account-name $storage
 az storage account show-connection-string --name $storage --resource-group $group --query connectionString --output tsv
 ```
 
+Create the `app.properties`:
+
+```properties
+# Storage Connection
+app.storage.connectionstring=...
+app.storage.queue_name=benchmark-queue
+
+# Controls
+app.init_consumer=false
+app.init_sender=true
+
+# Sender
+app.concurrent_sender_clients=10
+app.concurrent_processes_per_client=100
+app.message_quantity_to_send_per_client=10000
+app.message_size_in_bytes=1024
 ```
+
+```
+mvn install
 mvn exec:java
 ```
 
