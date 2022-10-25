@@ -1,7 +1,6 @@
 package io.pomatti.azure.stqueue.benchmark;
 
 import com.azure.storage.queue.QueueClient;
-import com.azure.storage.queue.models.SendMessageResult;
 
 public class Sender {
 
@@ -15,7 +14,7 @@ public class Sender {
   }
 
   public void send() {
-    SendMessageResult response = queueClient.sendMessage(message);
+    queueClient.sendMessage(message);
   }
 
 }
