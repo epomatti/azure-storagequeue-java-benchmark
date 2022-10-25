@@ -1,6 +1,10 @@
-# azure-storagequeue-java-benchmark
+# Azure Storage Queue
+
+Benchmarking for Azure Storage queue.
 
 ## 🖥️ Local Development
+
+Create the storage queue:
 
 ```sh
 location="brazilsouth"
@@ -39,6 +43,8 @@ app.message_quantity_to_send_per_client=10000
 app.message_size_in_bytes=1024
 ```
 
+Start the app:
+
 ```
 mvn install
 mvn exec:java
@@ -46,9 +52,13 @@ mvn exec:java
 
 ## 🚀 Cloud Benchmark
 
+Create a VM on Azure:
+
 ```sh
 az vm create -n "vm-benchmark" -g "rg-storagequeue-benchmark" --location "brazilsouth" --image "UbuntuLTS" --custom-data cloud-init.sh --size "Standard_D8s_v4" --public-ip-sku "Standard"
 ```
+
+Add a Private Endpoint for optimal performance.
 
 Connect to the VM:
 
@@ -63,9 +73,13 @@ java --version
 mvn --version
 ```
 
+Set memory parameters:
+
 ```sh
 export MAVEN_OPTS="-Xms256m -Xmx16g"
 ```
+
+Run the application:
 
 ```sh
 mvn install
