@@ -15,9 +15,11 @@ az storage account create \
   --sku "Standard_GZRS" \
   --kind "StorageV2"
 
+az storage queue create -n "benchmark-queue" --account-name $storage
+
 az storage account show-connection-string --name $storage --resource-group $group --query connectionString --output tsv
 ```
 
 ```
-
+mvn exec:java
 ```

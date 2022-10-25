@@ -42,6 +42,7 @@
         <artifactId>exec-maven-plugin</artifactId>
         <configuration>
           <mainClass>io.pomatti.azure.stqueue.benchmark.Application</mainClass>
+          <cleanupDaemonThreads>false</cleanupDaemonThreads>
         </configuration>
       </plugin>
     </plugins>

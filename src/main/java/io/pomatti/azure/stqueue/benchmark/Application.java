@@ -12,10 +12,20 @@ public class Application {
 
     boolean initConsumer = Boolean.parseBoolean(Config.getProperty("app.init_consumer"));
     boolean initSender = Boolean.parseBoolean(Config.getProperty("app.init_sender"));
-    int consumerConcurrentClients = Integer.parseInt(Config.getProperty("app.servicebus.concurrent_clients"));
-    int senderConcurrentClients = Integer.parseInt(Config.getProperty("app.sender_concurrent_clients"));
-
+    // int consumerConcurrentClients =
+    // Integer.parseInt(Config.getProperty("app.servicebus.concurrent_clients"));
+    int senderConcurrentClients = Integer.parseInt(Config.getProperty("app.concurrent_sender_clients"));
     
+    var sender = new Sender();
+    sender.start();
+    sender.send();
+
+    // if (initSender) {
+    //   for (int i = 0; i < senderConcurrentClients; i++) {
+    //     new SenderThread().start();
+    //   }
+    // }
+
   }
 
 }
