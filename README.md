@@ -1,5 +1,6 @@
 # azure-storagequeue-java-benchmark
 
+## 🖥️ Local Development
 
 ```sh
 location="brazilsouth"
@@ -21,5 +22,33 @@ az storage account show-connection-string --name $storage --resource-group $grou
 ```
 
 ```
+mvn exec:java
+```
+
+## 🚀 Cloud Benchmark
+
+```sh
+az vm create -n "vm-benchmark" -g "rg-storagequeue-benchmark" --location "brazilsouth" --image "UbuntuLTS" --custom-data cloud-init.sh --size "Standard_D8s_v4" --public-ip-sku "Standard"
+```
+
+Connect to the VM:
+
+```sh
+ssh <user>@<public-ip>
+```
+
+Check if the cloud-init script ran correctly:
+
+```sh
+java --version
+mvn --version
+```
+
+```sh
+export MAVEN_OPTS="-Xms256m -Xmx16g"
+```
+
+```sh
+mvn install
 mvn exec:java
 ```
